@@ -1,0 +1,65 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.1/angular.js"></script>
+<script src="https://rawgit.com/dwmkerr/angular-modal-service/master/dst/angular-modal-service.js"></script>
+
+
+
+<div class="container">
+  <div class="row">
+
+    <h1>Listado de Apps</h1>
+    <br>
+    <br>
+    <table class="centered">
+      <thead>
+      <tr>
+
+        <th width="2%">Catgoria</th>
+        <th width="5%">Titulo</th>
+        <th width="5%">Imagen</th>
+        <th width="5%">Detalle</th>
+      </tr>
+      </thead>
+    </table>
+
+    <div class="list-users" ng-repeat="user in home.users">
+
+
+
+      <table class="centered">
+        <tbody>
+        <tr ng-repeat="app in user.children | filter: search" >
+
+          <td width="2%">{{app.data.advertiser_category}}</td>
+          <td width="5%">{{app.data.title}}</td>
+
+          <td width="5%" >
+
+            <img  ng-if="app.data.icon_img !=''"src={{app.data.icon_img}}  width="200px" height="200px"/></td>
+
+          <img  ng-if="app.data.icon_img ==''"src="app/fonts/app_logo_default.png"  width="200px" height="200px"/></td>
+
+          <td width="5%">
+            <button class="detail" ui-sref="detailApp" ng-model="data.app" ng-click="getDetailApp(app.data)">
+              <i class="material-icons">remove_red_eye</i>
+              <md-tooltip md-direction="right">
+                Ver Resumen
+              </md-tooltip>
+            </button>
+
+
+
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+  </div>
+
+
+
+
+
+</div>
+
